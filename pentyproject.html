@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Photo Gallery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #image {
+        width: 80%;
+        height: 200px;
+        margin: 20px auto;
+        line-height: 200px;
+        background-color: lightgray;
+        background-size: cover;
+        background-position: center;
+        border: 2px solid #ccc;
+        color: #333;
+        font-size: 20px;
+      }
+      .gallery img {
+        width: 150px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interactive Photo Gallery</h1>
+    <div id="image">Hover over an image below to display here.</div>
+    <div class="gallery">
+      <img
+        src="https://cdn.pixabay.com/photo/2016/12/19/08/39/mobile-phone-1917737_640.jpg"
+        alt="Mobile Phone"
+        onmouseover="upDate(this)"
+        onmouseout="undo()"
+      />
+      <img
+        src="https://cdn.pixabay.com/photo/2016/09/22/10/43/eye-1686932_640.jpg"
+        alt="Eye Closeup"
+        onmouseover="upDate(this)"
+        onmouseout="undo()"
+      />
+      <img
+        src="https://cdn.pixabay.com/photo/2016/10/13/16/23/genoa-1738159_640.jpg"
+        alt="Genoa Landscape"
+        onmouseover="upDate(this)"
+        onmouseout="undo()"
+      />
+      <img
+        src="https://cdn.pixabay.com/photo/2022/01/20/15/34/monkey-6952630_640.jpg"
+        alt="Monkey"
+        onmouseover="upDate(this)"
+        onmouseout="undo()"
+      />
+      <img
+        src="https://cdn.pixabay.com/photo/2024/10/28/15/26/animal-9156395_640.jpg"
+        alt="Animal Closeup"
+        onmouseover="upDate(this)"
+        onmouseout="undo()"
+      />
+    </div>
+
+    <script>
+      function upDate(previewPic) {
+        // Log the previewPic details for debugging
+        console.log("Alt text: ", previewPic.alt);
+        console.log("Image source: ", previewPic.src);
+
+        // Update the background image and text of the #image div
+        const imageDiv = document.getElementById("image");
+        imageDiv.style.backgroundImage = `url(${previewPic.src})`;
+        imageDiv.textContent = previewPic.alt;
+      }
+
+      function undo() {
+        // Reset the background image and text of the #image div
+        const imageDiv = document.getElementById("image");
+        imageDiv.style.backgroundImage = "";
+        imageDiv.textContent = "Hover over an image below to display here.";
+      }
+    </script>
+  </body>
+</html>
